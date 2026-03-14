@@ -1,0 +1,1368 @@
+let arr = [10, 20, 30, 30, 30];
+//                 i
+let max = Math.max(arr[0], arr[1]); // 78
+let smax = Math.min(arr[0], arr[2]); // 56
+for (let i = 2; i < arr.length; i++) {
+  if (max < arr[i]) {
+    smax = max;
+    max = arr[i];
+  } else if (arr[i] > smax && max != arr[i]) {
+    smax = arr[i];
+  }
+}
+
+console.log(max, " ", smax);
+
+//===================================================================
+
+let arr2 = [10, 20, 56, 78, 34, 67, 21];
+
+let rarr = [];
+
+for (let i = arr2.length - 1; i >= 0; i--) {
+  rarr.push(arr2[i]);
+}
+
+console.log(rarr);
+
+//===================================================================
+
+let arr3 = [10, 20, 56, 78, 34, 67, 21];
+//                      i
+for (let i = 0; i < arr3.length / 2; i++) {
+  temp = arr3[i]; // 10// 78
+  arr3[i] = arr3[arr3.length - 1 - i]; // 21
+  arr3[arr3.length - 1 - i] = temp; // 10
+}
+
+console.log(arr3);
+
+//==================================================================
+
+let arrr = [0, 0, 1, 0, 1, 0, 1, 0, 1];
+
+let i = 0,
+  j = 0;
+while (i < arrr.length) {
+  if (arrr[i] === 0) {
+    let temp = arrr[i];
+    arrr[i] = arrr[j];
+    arrr[j] = temp;
+    j++;
+  }
+  i++;
+}
+
+console.log(arrr);
+
+//=======================================
+
+let arr = [1, 2, 3, 4, 5];
+let temp = new Array(arr.length);
+let rtemp = new Array(arr.length);
+let k = Number(prompt("enter k value: "));
+
+for (let i = 0; i < arr.length; i++) {
+  temp[i] = arr[(i + k) % arr.length];
+  rtemp[(i + k) % arr.length] = arr[i];
+}
+
+console.log(temp);
+console.log(rtemp);
+
+//=============================================
+
+// left rotation
+
+let arr = [1, 2, 3, 4, 5];
+let k = Number(prompt("enter k value: "));
+k = k % arr.length;
+
+reverse(0, k - 1);
+reverse(k, arr.length - 1);
+reverse(0, arr.length - 1);
+
+function reverse(i, j) {
+  while (i < j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+  }
+}
+console.log(arr);
+
+// right rotation
+
+let arr = [1, 2, 3, 4, 5];
+let k = Number(prompt("enter k value: "));
+k = k % arr.length;
+
+reverse(0, arr.length - 1);
+reverse(0, k - 1);
+reverse(k, arr.length - 1);
+
+function reverse(i, j) {
+  while (i < j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+  }
+}
+console.log(arr);
+
+//================================================
+
+let arr = [0, 0, 1, 2, 2, 3, 3, 4];
+
+let j = 1;
+for (let i = 0; i < arr.length - 1; i++) {
+  if (arr[i] != arr[i + 1]) {
+    arr[j] = arr[i + 1];
+    j++;
+  }
+}
+
+console.log(arr);
+console.log(j);
+
+//===========================================================
+
+let arr1 = [2, 5, 6],
+  arr2 = [1, 3, 4, 8];
+
+temp = [];
+let i = 0,
+  j = 0;
+for (let k = 0; k < arr1.length + arr2.length; k++) {
+  // If arr1 finished, take from arr2
+  if (i >= arr1.length) {
+    temp[k] = arr2[j++];
+  }
+  // If arr2 finished, take from arr1
+  else if (j >= arr2.length) {
+    temp[k] = arr1[i++];
+  } else if (arr1[i] > arr2[j]) {
+    temp[k] = arr2[j];
+    j++;
+  } else if (arr1[i] < arr2[j]) {
+    temp[k] = arr1[i];
+    i++;
+  }
+}
+
+console.log(temp);
+
+//===============================================
+
+let arr = [1, 2, 3, 4, 5];
+
+let copy = arr[0];
+
+for (let i = 0; i < arr.length - 1; i++) {
+  arr[i] = arr[i + 1];
+}
+
+arr[arr.length - 1] = copy;
+
+console.log(arr);
+
+//=======================================
+
+let arr = [1, 2, 3, 4, 5];
+
+let copy = arr[arr.length - 1];
+
+for (let i = arr.length - 1; i > 0; i--) {
+  arr[i] = arr[i - 1];
+}
+
+arr[0] = copy;
+
+console.log(arr);
+
+//============================================
+
+let arr = [1, 2, 3, 4, 5];
+
+let k = Number(prompt("Enter number: "));
+
+k = k % arr.length;
+
+for (let j = 0; j < k; j++) {
+  let copy = arr[0];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
+  }
+
+  arr[arr.length - 1] = copy;
+}
+console.log(arr);
+
+//============================================
+
+let arr = [1, 2, 3, 4, 5];
+
+let k = Number(prompt("Enter number: "));
+
+k = k % arr.length;
+
+for (let j = 0; j < k; j++) {
+  let copy = arr[arr.length - 1];
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
+  }
+
+  arr[0] = copy;
+}
+console.log(arr);
+
+//=================================================
+// with extra space
+
+let arr = [1, 2, 3, 4, 5];
+let temp = new Array(arr.length);
+let k = Number(prompt("Enter number: "));
+
+k = k % arr.length;
+
+for (let i = 0; i < arr.length; i++) {
+  temp[i] = arr[(i + k) % arr.length];
+}
+
+console.log(temp);
+
+//=====================================================
+// with extra space
+
+let arr = [1, 2, 3, 4, 5];
+let temp = new Array(arr.length);
+let k = Number(prompt("Enter number: "));
+
+k = k % arr.length;
+
+for (let i = 0; i < arr.length; i++) {
+  temp[(i + k) % arr.length] = arr[i];
+}
+
+console.log(temp);
+
+//====================================================
+//rotate to left
+let arr = [1, 2, 3, 4, 5];
+let k = Number(prompt("Enter a number: "));
+k = k % arr.length;
+reverse(0, k - 1);
+reverse(k, arr.length - 1);
+reverse(0, arr.length - 1);
+
+function reverse(i, j) {
+  while (i < j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+  }
+}
+
+console.log(arr);
+
+//====================================================
+//rotate to right
+let arr = [1, 2, 3, 4, 5];
+let k = Number(prompt("Enter a number: "));
+k = k % arr.length;
+reverse(0, arr.length - 1);
+reverse(0, k - 1);
+reverse(k, arr.length - 1);
+
+function reverse(i, j) {
+  while (i < j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+  }
+}
+
+console.log(arr);
+
+//===============================================
+//remove duplicates from sorted array
+
+let arr = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
+let j = 1;
+for (let i = 0; i < arr.length - 1; i++) {
+  if (arr[i] != arr[i + 1]) {
+    arr[j] = arr[i + 1];
+    j++;
+  }
+}
+console.log(j);
+console.log(arr);
+
+//================================================================
+//merge sort error
+
+let arr1 = [2, 5, 6],
+  arr2 = [1, 3, 4, 7, 8];
+let j = 0,
+  k = 0;
+let temp = [];
+for (let i = 0; i < arr1.length + arr2.length; i++) {
+  if (j >= arr1.length) {
+    temp[i] = arr2[k];
+    k++;
+  } else if (i >= arr2.length) {
+    temp[i] = arr1[j];
+    j++;
+  } else if (arr1[j] < arr2[k]) {
+    temp[i] = arr1[j];
+    j++;
+  } else if (arr1[j] > arr2[k]) {
+    temp[i] = arr2[k];
+    k++;
+  }
+}
+
+console.log(temp);
+
+//===========================================
+// merge sorted array
+
+let arr1 = [4, 5, 6, 0, 0, 0];
+let arr2 = [1, 2, 3];
+function mergeArr(arr1, m, arr2, n) {
+  let i = m - 1;
+  let j = n - 1;
+  let k = m + n - 1;
+  while (j >= 0) {
+    if (arr1[i] > arr2[j]) {
+      arr1[k] = arr1[i];
+      i--;
+    } else {
+      arr1[k] = arr2[j];
+      j--;
+    }
+    k--;
+  }
+}
+
+mergeArr(arr1, 3, arr2, 3);
+console.log(arr1);
+
+//===========================================================
+// Find max profit
+
+let arr = [7, 2, 5, 3, 1, 3];
+let maxProfit = 0;
+let min = arr[0];
+
+for (let i = 1; i < arr.length; i++) {
+  if (min > arr[i]) {
+    min = arr[i];
+  } else if (maxProfit < arr[i] - min) {
+    maxProfit = arr[i] - min;
+  }
+}
+console.log(maxProfit);
+
+//=============================================================
+//sort array
+
+let arr = [2, 0, 2, 1, 1, 0];
+let i = 0;
+let j = arr.length - 1;
+while (i < j) {
+  if (arr[i] > arr[j]) {
+    temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+  } else {
+    i++;
+  }
+}
+console.log(arr);
+
+//============================================================
+// sort color
+
+let arr = [2, 0, 2, 1, 1, 0];
+
+let low = 0;
+let mid = 0;
+let high = arr.length - 1;
+
+while (mid <= high) {
+  if (arr[mid] === 0) {
+    temp = arr[low];
+    arr[low] = arr[mid];
+    arr[mid] = temp;
+    low++;
+    mid++;
+  } else if (arr[mid] === 1) {
+    mid++;
+  } else {
+    temp = arr[mid];
+    arr[mid] = arr[high];
+    arr[high] = temp;
+    high--;
+  }
+}
+
+console.log(arr);
+
+//==================================================
+// maximum subArray
+// kadane's algorithm
+
+arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+
+let max = -Infinity;
+let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+  if (sum > max) {
+    max = sum;
+  }
+  if (sum < 0) {
+    sum = 0;
+  }
+}
+
+console.log(max);
+
+//===========================================
+// majority element
+// moore's voting algorithm
+
+arr = [2, 2, 1, 1, 1, 2];
+
+let ans = arr[0];
+let count = 1;
+
+for (let i = 1; i < arr.length; i++) {
+  if (count === 0) {
+    ans = arr[i];
+    count = 1;
+  } else if (arr[i] === ans) {
+    count++;
+  } else {
+    count--;
+  }
+}
+console.log(ans);
+
+//============================================
+// Trapping Rain Water
+
+arr = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+
+left = [];
+right = [];
+maxLeft = arr[0];
+maxRight = arr[arr.length - 1];
+sum = 0;
+for (let i = 0; i < arr.length; i++) {
+  if (maxLeft <= arr[i]) {
+    left[i] = arr[i];
+    maxLeft = arr[i];
+  } else {
+    left[i] = maxLeft;
+  }
+}
+
+for (let i = arr.length - 1; i >= 0; i--) {
+  if (maxRight <= arr[i]) {
+    right[i] = arr[i];
+    maxRight = arr[i];
+  } else {
+    right[i] = maxRight;
+  }
+}
+
+for (let i = 0; i < arr.length; i++) {
+  sum += Math.min(left[i], right[i]) - arr[i];
+}
+
+console.log(left);
+console.log(right);
+console.log(sum);
+
+//============================================================
+
+arr = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+
+left = new Array(arr.length);
+right = new Array(arr.length);
+maxLeft = arr[0];
+maxRight = arr[arr.length - 1];
+sum = 0;
+((left[0] = maxLeft), (right[right.length - 1] = maxRight));
+
+for (let i = 1; i < arr.length; i++) {
+  maxLeft = Math.max(arr[i], maxLeft);
+  left[i] = maxLeft;
+}
+
+for (let i = arr.length - 2; i >= 0; i--) {
+  maxRight = Math.max(arr[i], maxRight);
+  right[i] = maxRight;
+}
+
+for (let i = 0; i < arr.length; i++) {
+  sum += Math.min(left[i], right[i]) - arr[i];
+}
+
+console.log(left);
+console.log(right);
+console.log(sum);
+
+//==================================================================
+//star
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {
+    process.stdout.write("* ");
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= i; j++) {
+    process.stdout.write("* ");
+  }
+  console.log();
+}
+
+/**
+  Enter a number: 5
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  let ascii = 65;
+  for (let j = 1; j <= i; j++) {
+    process.stdout.write(String.fromCharCode(ascii) + " ");
+    ascii++;
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+A 
+A B 
+A B C 
+A B C D 
+A B C D E 
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n - i + 1; j++) {
+    process.stdout.write("* ");
+  }
+  console.log();
+}
+
+/*
+Enter a number: 5
+* * * * * 
+* * * * 
+* * * 
+* * 
+* 
+  */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n - i; j++) {
+    process.stdout.write("  ");
+  }
+  for (let j = 1; j <= i; j++) {
+    process.stdout.write("* ");
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+        * 
+      * * 
+    * * * 
+  * * * * 
+* * * * * 
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n - i; j++) {
+    process.stdout.write(" ");
+  }
+  for (let j = 1; j <= i; j++) {
+    process.stdout.write("* ");
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= n; j++) {
+    if (i === j || i + j == n + 1) {
+      process.stdout.write("*");
+    } else {
+      process.stdout.write(" ");
+    }
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+*   *
+ * * 
+  *  
+ * * 
+*   *
+ */
+
+let n = Number(prompt("Enter a number: "));
+for (let i = 1; i <= n; i++) {
+  for (let j = 1; j <= 2 * n; j++) {
+    if (i === j || i + j == 2 * n) {
+      process.stdout.write("*");
+    } else {
+      process.stdout.write(" ");
+    }
+  }
+  console.log();
+}
+
+/**
+ Enter a number: 5
+*       * 
+ *     *  
+  *   *   
+   * *    
+    *   
+ */
+
+//==================================================
+// String
+// String is immutable means can not be change by s[2] = 'y'
+// String is collection or character
+// String is not array of character
+
+let s = "animal";
+
+//length
+console.log(s.length);
+
+//slice
+console.log(s.slice(1, 5));
+console.log(s.slice(-4, s.length));
+
+//subString
+console.log(s.substring(2, 6));
+console.log(s.substring(2));
+
+//toUpperCase
+console.log(s.toUpperCase());
+
+//concat
+console.log(s.concat(" ", "world"));
+
+//trim()
+console.log(s.trim());
+
+//charAt
+console.log(s.charAt(2));
+console.log(s.charCodeAt(2));
+
+//indexOf(subString)
+let s = "animal animal world";
+
+console.log(s.indexOf("animal"));
+
+//lastIndexOf(subString)
+let s = "animal animal world";
+
+console.log(s.lastIndexOf("animal"));
+
+//includes(subString)
+let s = "animal animal world";
+
+console.log(s.includes("animal"));
+console.log(s.includes("cat"));
+// true
+// false
+
+//startsWith(subString)
+let s = "animal animal world";
+
+console.log(s.startsWith("animal"));
+console.log(s.startsWith("world"));
+// true
+// false
+
+//endsWith(subString)
+let s = "animal animal world";
+
+console.log(s.endsWith("world"));
+console.log(s.endsWith("animal"));
+// true
+// false
+
+//replace(old, new)
+let s = "animal animal world";
+
+console.log(s.replace("animal", "dog"));
+// dog animal world
+
+//replaceAll(old, new)
+let s = "animal animal world";
+
+console.log(s.replaceAll("animal", "dog"));
+// dog dog world
+
+//split(separator)
+let s = "animal animal world";
+
+console.log(s.split(" "));
+// [ 'animal', 'animal', 'world' ]
+
+let s = "a,b,c,d";
+
+console.log(s.split(","));
+// [ 'a', 'b', 'c', 'd' ]
+
+// print each character on new line
+
+let s = "animal";
+for (let i = 0; i < s.length; i++) {
+  console.log(s[i]);
+  console.log(s.charAt(i));
+}
+// reverse
+for (let i = s.length - 1; i >= 0; i--) {
+  console.log(s[i]);
+  console.log(s.charAt(i));
+}
+
+//print in reverse order
+let s = "animal";
+let rev = "";
+for (let i = s.length - 1; i >= 0; i--) {
+  rev = rev + s.charAt(i);
+}
+
+console.log(rev);
+
+//check if string is palindrome or not
+
+let s = prompt("Enter a string: ");
+// let rev = "";
+// for (let i = s.length - 1; i >= 0; i--) {
+// rev = rev + s.charAt(i);
+// }
+// if(rev == s) console.log("palindrome");
+// else console.log("no palindrome");
+//
+let i = 0;
+let j = s.length - 1;
+let isPalindrome = true;
+
+while (i < j) {
+  if (s.charAt(i) != s.charAt(j)) {
+    isPalindrome = false;
+    break;
+  }
+  i++;
+  j--;
+}
+if (isPalindrome) console.log("palindrome");
+else console.log("no palindrome");
+
+//Toggle each character
+// "AbCDeF" -> "aBcdEf"
+
+let s = prompt("Enter a string: ");
+
+let toggle = "";
+
+for (let i = 0; i < s.length; i++) {
+  let ch = s.charCodeAt(i);
+  if (ch >= 65 && ch <= 90) {
+    toggle = toggle + String.fromCharCode(ch + 32);
+  } else if (ch >= 97 && ch <= 122) {
+    toggle = toggle + String.fromCharCode(ch - 32);
+  }
+}
+
+console.log(toggle);
+
+//frequency of each character
+
+//hello
+
+//h - 1
+//e - 1
+//l - 2
+//0 - 1
+
+let s = prompt("Enter a string: ");
+let arr = new Array(128).fill(0);
+
+for (let i = 0; i < s.length; i++) {
+  let index = s.charCodeAt(i);
+  arr[index] = arr[index] + 1;
+}
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (arr[i] > 0) {
+//     console.log(String.fromCharCode(i) + " appears at " + arr[i] + " times");
+//   }
+// }
+
+for (let i = 0; i < s.length; i++) {
+  let index = s.charCodeAt(i);
+  if (arr[index] > 0) {
+    console.log(s[i] + " - " + arr[index]);
+    arr[index] = 0;
+  }
+}
+
+// Time and Space Complexity
+
+// Amount of time taken (operation) as the
+// function of input size(n)
+
+// handling for large input
+
+// Complexity Representation (Big O)
+
+// Type
+// - Constant Time or O(1)
+//   Jab task ek step me ho jaye
+//   Jab n ki value given ho(n=10) or n time loop chal raha ho to vo bhi O(1) hoga na ki O(n).
+
+// - Liner Time complexity or O(n)
+//   Jab na ki value given nhi hai or n time loop chalega vo O(n) hoga
+
+// - Quadratic TC or O(n^2)
+//   Jab loop ke andar loop ho, n times chale
+
+// - O(logn)
+//   Binary Search
+
+// - O(nlogn)
+//   Binary Search in n loop
+
+// - 2^n, 3^n or exponential
+
+// - n! or factorial TC
+
+// Generating Complexity equation
+// EX:
+// for(1->n){}  n    n+n+n=3n
+// for(1->n){}  n       3n=n
+// for(1->n){}  n       O(n)
+
+// EX:
+// for(1->n){    n    |     |
+//   for(1->n){}   n  | n^2 |  n^+n = n^2
+// }                  |     |
+// for(1->n){}   n    |  n  |  O(n^2)
+
+// TLE(time limit exited)
+
+// MAX value of N                       Time complexity
+//    >= 10^9                           O(logN) or O(1)
+//    <= 10^9                           O(Sqrt(N))
+//    10^8                              O(N) Border case
+//    10^7                              O(N) Might be accepted
+//    10^6                              O(N * logN) Perfect
+//    10^5                              O(N * logN) or O(N * sqrt(N))
+//    10^4                              O(N ^ 2)
+//    10^2                              O(N ^ 3)
+//    <= 160                            O(N ^ 4)
+//    <= 18                             O(2N*N2)
+//    <= 10                             O(N!), O(2N)
+
+// factorial
+
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+let n = 5;
+console.log(factorial(n));
+
+// fibonacci
+
+let n = 10;
+let a = 0;
+let b = 1;
+for (let i = 0; i < n; i++) {
+  console.log(a);
+  let next = a + b;
+  a = b;
+  b = next;
+}
+
+// check prime number
+
+let n = Number(prompt("Enter a number: "));
+
+function checkPrimeNumber(n) {
+  if (n <= 1) {
+    return false;
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(checkPrimeNumber(n));
+
+// reverse a number
+
+let n = Number(prompt("Enter a number: "));
+
+let reverse = 0;
+
+while (n > 0) {
+  let digit = n % 10;
+  reverse = reverse * 10 + digit;
+  n = Math.floor(n / 10);
+}
+
+console.log(reverse);
+
+// sum of digits
+
+let n = Number(prompt("Enter a number: "));
+
+let sum = 0;
+
+while (n > 0) {
+  let digit = n % 10;
+  sum = sum + digit;
+  n = Math.floor(n / 10);
+}
+
+console.log(sum);
+
+// palindrome number
+
+let n = Number(prompt("Enter a number: "));
+let copy = n;
+let reverse = 0;
+
+while (n > 0) {
+  let digit = n % 10;
+  reverse = reverse * 10 + digit;
+  n = Math.floor(n / 10);
+}
+
+if (copy == reverse) {
+  console.log("Palindrome");
+} else {
+  console.log("Not a Palindrome");
+}
+
+// armstrong
+
+let n = Number(prompt("Enter a number: "));
+let copy = n;
+let original = n;
+// let count = 0;
+let count = n.toString().length;
+let sum = 0;
+// while (n > 0) {
+//   n = Math.floor(n / 10);
+//   count = count + 1;
+// }
+
+for (let i = 0; i < count; i++) {
+  let digit = copy % 10;
+  sum = sum + digit ** count;
+  copy = Math.floor(copy / 10);
+}
+
+if (sum === original) {
+  console.log(original + " is an Armstrong number");
+} else {
+  console.log(original + " is not an Armstrong number");
+}
+
+// Largest Number in Array
+
+
+let arr = [3, 5, 7, 2, 8];
+
+let large = arr[0];
+
+for (let i = 1; i < arr.length; i++) {
+  if(arr[i]>large){
+    large = arr[i]
+  }
+}
+
+console.log(large);
+
+
+
+// Bubble sort
+
+let arr = [10, 5, 12, 1, 3];
+let n = arr.length;
+for (let i = 0; i < n - 1; i++) {
+  for (let j = 0; j < n - i - 1; j++) {
+    if (arr[j] > arr[j + 1]) {
+      let temp = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = temp;
+    }
+  }
+}
+
+console.log(arr);
+
+// Selection Sort
+// It work on index mainly
+// We create sorted and unsorted part in array
+// left side me apne minimum value ki index find karege under 
+// ke loop me or loop ke bahar nikal ke swipe karege 1st i 1st loop ke liye bahar ke 
+// fir same 2nd ke liye krege minimum find krege or swipe krege
+
+let arr = [10, 5, 12, 1, 3];
+let n = arr.length;
+for (let i = 0; i < n - 1; i++) {
+  let minIndex = i;
+  for (let j = i + 1; j < n; j++) {
+    if (arr[minIndex] > arr[j]) {
+      minIndex = j;
+    }
+  }
+  if (minIndex != i) {
+    let temp = arr[minIndex];
+    arr[minIndex] = arr[i];
+    arr[i] = temp;
+  }
+}
+
+console.log(arr);
+
+// Insert Sort
+// Suppose 1st arr[0] sorted part hai to 
+// left se 1st uthavo or left side sorted rakho
+  
+let arr = [10, 5, 12, 1, 3];
+let n = arr.length;
+for (let i = 1; i < n; i++) {
+  let key = arr[i];
+  let j = i - 1;
+  while (j >= 0 && arr[j] > key) {
+    arr[j + 1] = arr[j];
+    j--;
+  }
+  arr[j + 1] = key;
+}
+
+console.log(arr);
+
+
+//=========================================================
+
+// Recursion
+
+// add number
+
+function temp(n) {
+  if (n == 1) return 1;
+  return n + temp(n - 1);
+}
+console.log(temp(10));
+
+// factorial
+
+function temp(n) {
+  if (n == 1) return 1;
+  return n * temp(n - 1);
+}
+console.log(temp(10));
+
+// febonacci
+
+function temp(n) {
+  if (n === 0 || n === 1) return n;
+  return temp(n - 1) + temp(n - 2);
+}
+
+console.log(temp(4));
+
+
+// GCD/HCF
+
+function hcf(a, b) {
+  let n = Math.min(a, b)
+  console.log("🚀 ~ hcf ~ n:", n)
+  for (let i = n; i >= 1; i--) {
+    if (a % i === 0 && b % i === 0) {
+      return i;
+    }
+  }
+}
+
+console.log(hcf(32, 20));
+
+// or
+
+function hcf(a, b) {
+  if (a === b) {
+    return a;
+  } else if (a > b) {
+    return hcf(a - b, b);
+  } else {
+    return hcf(a, b - a);
+  }
+}
+
+console.log(hcf(32, 20));
+
+// or
+
+
+let a = 32,
+  b = 20;
+
+while (a != b) {
+  if (a > b) a = a - b;
+  else b = b - a;
+}
+
+console.log(a);
+
+// or
+
+function hcf(a, b) {
+  if (b == 0) {
+    return a;
+  } 
+  return hcf(b, a%b)
+}
+
+console.log(hcf(32, 20));
+
+
+// all factors of number
+
+for (let i = 1; i <= Math.sqrt(n); i++) {
+  if (n % i === 0) {
+    console.log(i);
+
+    if (i !== n / i) {
+      console.log(n / i);
+    }
+  }
+}
+
+// Prime Number
+
+let n = 100;
+let arr = new Array(n + 1).fill(true);
+
+for (let i = 2; i <=Math.floor(Math.sqrt(n)); i++) {
+  if (arr[i]) {
+    for (let j = i * i; j <= n; j += i) {
+      arr[j] = false;
+    }
+  }
+}
+for (let i = 2; i < arr.length; i++) {
+  if (arr[i]) process.stdout.write(i+ " ");
+}
+
+//=================================================================================================
+
+// Binary Search
+
+// to find mid, we use (first + last)/2, instead of this
+// we can use (first + (last - first)/2)
+
+
+let arr = [2, 5, 8, 9, 12, 18, 20, 25, 67, 101, 125];
+
+function BS(arr, target) {
+  let first = 0;
+  let last = arr.length - 1;
+  while (first <= last) {
+    let mid = Math.floor((first + last) / 2);
+    if (arr[mid] == target) {
+      return mid;
+    } else if (arr[mid] > target) {
+      last = mid - 1;
+    } else if (arr[mid] < target) {
+      first = mid + 1;
+    }
+  }
+  return -1
+}
+
+console.log(BS(arr, 25));
+
+// Merge sort
+
+let arr = [8, 2, 1, 9, 5, 12, 4, 20];
+
+function conquor(arr, first, mid, last) {
+  let temp = new Array(last - first + 1);
+  let i = first,
+    j = mid + 1,
+    k = 0;
+  while (i <= mid && j <= last) {
+    if (arr[i] < arr[j]) {
+      temp[k++] = arr[i++];
+    } else {
+      temp[k++] = arr[j++];
+    }
+  }
+  while (i <= mid) {
+    temp[k++] = arr[i++];
+  }
+  while (j <= last) {
+    temp[k++] = arr[j++];
+  }
+  let p = 0,
+    t = first;
+  while (p < temp.length) {
+    arr[t++] = temp[p++];
+  }
+}
+
+function divide(arr, first, last) {
+  if (first >= last) return;
+  let mid = Math.floor((first + last) / 2);
+  divide(arr, first, mid);
+  divide(arr, mid + 1, last);
+  conquor(arr, first, mid, last);
+}
+
+divide(arr, 0, arr.length - 1);
+
+console.log(arr);
+
+// Quick sort
+// pivot and partition
+
+let arr = [8, 2, 1, 9, 5, 12, 4, 20];
+
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+  
+  const pivot = arr[0];
+  const left = [];
+  const right = [];
+  
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] <= pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  
+  const sortedLeft = quickSort(left);
+  const sortedRight = quickSort(right);
+  const result = [];
+  
+  for (let i = 0; i < sortedLeft.length; i++) {
+    result.push(sortedLeft[i]);
+  }
+  result.push(pivot);
+  for (let i = 0; i < sortedRight.length; i++) {
+    result.push(sortedRight[i]);
+  }
+  
+  return result;
+}
+
+arr = quickSort(arr);
+console.log(arr);
+
+// or
+
+let arr = [8, 2, 1, 9, 5, 12, 4, 20];
+
+function findPivotIdx(arr, start, last) {
+  let p = arr[start];
+  let i = start + 1,
+    j = last;
+  while (i <= j) {
+    while (i <= last && arr[i] <= p) i++;
+    while (j >= start && arr[j] > p) j--;
+
+    if (i < j) {
+      swap(arr, i, j);
+    }
+  }
+  swap(arr, j, start);
+  return j;
+}
+function quickSort(arr, start, last) {
+  if (start >= last) return;
+  let pIx = findPivotIdx(arr, start, last);
+  quickSort(arr, start, pIx - 1);
+  quickSort(arr, pIx + 1, last);
+}
+
+function swap(arr, i, j) {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+quickSort(arr, 0, arr.length-1);
+console.log(arr);
