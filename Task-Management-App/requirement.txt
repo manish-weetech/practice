@@ -1,0 +1,10 @@
+fastapi[all]
+sqlalchemy
+psycopg2-binary
+pydantic-settings
+pwdlib[argon2]
+pyjwt
+alembic
+python-dotenv
+pytest
+httpx
