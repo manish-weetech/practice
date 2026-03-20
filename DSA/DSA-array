@@ -1366,3 +1366,26 @@ function swap(arr, i, j) {
 
 quickSort(arr, 0, arr.length-1);
 console.log(arr);
+
+// ===========================================
+
+// [0,1,2,0,2,5,0,1,0,4] make all zeros go to extreme left/right without changing other element's order. 
+
+let arr = [0,1,2,0,2,5,0,1,0,4];
+
+let j = 0;
+
+// Move non-zero elements forward
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] !== 0) {
+    arr[j] = arr[i];
+    j++;
+  }
+}
+
+// Fill remaining with zeros
+for (let i = j; i < arr.length; i++) {
+  arr[i] = 0;
+}
+
+console.log(arr);
