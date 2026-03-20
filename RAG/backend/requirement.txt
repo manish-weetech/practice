@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+SQLAlchemy
+psycopg2-binary
+pydantic-settings
+pwdlib[argon2]
+pyjwt
+alembic
+langchain
+langchain-google-genai
+langchain-community
+pypdf
+docx2txt
+chromadb
+python-multipart
+pytest
+httpx
