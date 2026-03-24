@@ -3,7 +3,7 @@ from src.user.models import UserModel
 from src.utils.helpers import is_authentication
 from src.utils.db import get_db
 from sqlalchemy.orm import Session
-from src.rag.dtos import AskRequest, AskResponse, UploadResponse, DocumentResponseSchema
+from src.rag.dtos import AskRequest, AskResponse, UploadResponse, DocumentResponseSchema, ChatHistoryResponseSchema
 from typing import List
 from src.rag import controller
 
@@ -35,10 +35,11 @@ async def upload_document(
 )
 def ask_question(
     body: AskRequest,
-    user: UserModel = Depends(is_authentication)
+    user: UserModel = Depends(is_authentication),
+    db: Session = Depends(get_db)
 ):
     """Asks a question regarding the previously uploaded documents."""
-    return controller.ask_question(body)
+    return controller.ask_question(body, db)
 
 @rag_routes.get(
     "/documents", 
@@ -53,3 +54,17 @@ def get_user_documents(
 ):
     """Returns all documents processed by the current user."""
     return controller.get_user_documents(db, user.id)
+
+@rag_routes.get(
+    "/history/{doc_id}",
+    response_model=List[ChatHistoryResponseSchema],
+    status_code=status.HTTP_200_OK,
+    summary="Get Chat History",
+    description="Returns chronological message history for a given document."
+)
+def get_chat_history(
+    doc_id: str,
+    user: UserModel = Depends(is_authentication),
+    db: Session = Depends(get_db)
+):
+    return controller.get_chat_history(doc_id, db)

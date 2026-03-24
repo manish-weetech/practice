@@ -1,11 +1,7 @@
 from fastapi import FastAPI
-from src.utils.db import Base, engine
 from src.user.router import user_routes
 from src.rag.router import rag_routes
-from src.rag.models import DocumentModel
 from fastapi.middleware.cors import CORSMiddleware
-
-Base.metadata.create_all(engine)
 
 tags_metadata = [
     {
