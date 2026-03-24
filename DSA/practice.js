@@ -427,3 +427,91 @@ const prompt = require("prompt-sync")();
 //   }
 // }
 // console.log(arr);
+
+// ==============================
+
+// a2b4e4f2g3
+
+// let s = "aabbbbeeeeffgg";
+// let result = "";
+// let count = 1;
+
+// for (let i = 0; i < s.length; i++) {
+//     if (s[i] === s[i + 1]) {
+//         count++;
+//     } else {
+//         result = result + s[i] + count;
+//         count = 1;
+//     }
+// }
+
+// console.log("🚀 ~ result:", result)
+
+// ==============================
+
+// let matrix = [
+//   [1, 2, 3, 4],
+//   [5, 6, 7, 8],
+//   [9, 10, 11, 12],
+//   [13, 14, 15, 16],
+//   [17, 18, 19, 20],
+// ];
+
+// function spiralTraversal(matrix) {
+//     let result = [];
+//     let rows = matrix.length;
+//     let cols = matrix[0].length;
+
+//     let top = 0, bottom = rows - 1;
+//     let left = 0, right = cols - 1;
+
+//     while (top <= bottom && left <= right) {
+//         // Traverse from left to right
+//         for (let i = left; i <= right; i++) {
+//             result.push(matrix[top][i]);
+//         }
+//         top++;
+
+//         // Traverse downwards
+//         for (let i = top; i <= bottom; i++) {
+//             result.push(matrix[i][right]);
+//         }
+//         right--;
+
+//         if (top <= bottom) {
+//             // Traverse from right to left
+//             for (let i = right; i >= left; i--) {
+//                 result.push(matrix[bottom][i]);
+//             }
+//             bottom--;
+//         }
+
+//         if (left <= right) {
+//             // Traverse upwards
+//             for (let i = bottom; i >= top; i--) {
+//                 result.push(matrix[i][left]);
+//             }
+//             left++;
+//         }
+//     }
+//     return result;
+// }
+
+// const spiralOrder = spiralTraversal(matrix);
+// console.log(spiralOrder.join(' '));
+
+// ==============================
+
+let arr = [1, 2, 3, 3, 4, 1, 4, 5, 1, 2];
+
+let counts = {};
+
+for (let num of arr) {
+    counts[num] = (counts[num] || 0) + 1;
+}
+Object.keys(counts)
+        .sort((a, b) => a - b)
+        .forEach(key => {
+            console.log(`${key} occurs ${counts[key]} times`);
+        });
+console.log("🚀 ~ counts:", counts)

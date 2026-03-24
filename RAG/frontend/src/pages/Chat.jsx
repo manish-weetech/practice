@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Send } from 'lucide-react';
 
@@ -14,6 +14,28 @@ export default function Chat() {
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem('access_token');
+
+  useEffect(() => {
+    fetchHistory();
+  }, [docId]);
+
+  const fetchHistory = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/rag/history/${docId}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const formattedHistory = data.map(msg => ({
+          role: msg.role,
+          text: msg.text
+        }));
+        setChatHistory(formattedHistory);
+      }
+    } catch (err) {
+      console.error("Failed to fetch history", err);
+    }
+  };
 
   const handleAsk = async (e) => {
     e.preventDefault();

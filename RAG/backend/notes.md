@@ -98,20 +98,31 @@ config.set_main_option("sqlalchemy.url", settings.DB_CONNECTION)
 
 ## Running the App
 
-### 1. Activate Virtual Environment
+This project uses a decoupled React Frontend and FastAPI Backend architecture. You will need two terminal windows.
+
+### 1. Start the Backend (FastAPI)
+
+Open your first terminal and start the Uvicorn server:
 
 ```bash
+cd backend
 source venv/bin/activate
-```
-
-### 2. Start the Server
-
-```bash
 uvicorn main:app --reload
 ```
 
-App runs at: [http://localhost:8000](http://localhost:8000)  
+The Backend API runs at: [http://localhost:8000](http://localhost:8000)  
 Swagger docs at: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+### 2. Start the Frontend (React Dashboard)
+
+Open a second terminal and start the Vite development server:
+
+```bash
+cd frontend
+npm run dev
+```
+
+The Web Dashboard runs at: [http://localhost:5173](http://localhost:5173)
 
 ---
 

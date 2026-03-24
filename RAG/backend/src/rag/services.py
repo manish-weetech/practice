@@ -12,7 +12,7 @@ from src.utils.settings import settings
 import logging
 import uuid
 from sqlalchemy.orm import Session
-from src.rag.models import DocumentModel
+from src.rag.models import DocumentModel, ChatHistoryModel
 
 logger = logging.getLogger(__name__)
 
@@ -79,7 +79,7 @@ class RagService:
             if os.path.exists(file_path):
                 os.remove(file_path)
 
-    def answer_question(self, doc_id: str, question: str) -> str:
+    def answer_question(self, doc_id: str, question: str, db: Session) -> str:
         """Retrieves relevant contexts matching doc_id from the vector db and answers the question using an LLM chain."""
         retriever = self.vector_store.as_retriever(search_kwargs={"k": 5, "filter": {"doc_id": doc_id}})
         
@@ -100,4 +100,12 @@ class RagService:
         rag_chain = create_retrieval_chain(retriever, question_answer_chain)
         
         response = rag_chain.invoke({"input": question})
-        return response["answer"]
+        answer = response["answer"]
+        
+        # Persist to relational database
+        user_msg = ChatHistoryModel(doc_id=doc_id, role="user", text=question)
+        ai_msg = ChatHistoryModel(doc_id=doc_id, role="ai", text=answer)
+        db.add_all([user_msg, ai_msg])
+        db.commit()
+        
+        return answer

@@ -25,3 +25,13 @@ class DocumentResponseSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ChatHistoryResponseSchema(BaseModel):
+    id: int
+    doc_id: str
+    role: str
+    text: str
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
